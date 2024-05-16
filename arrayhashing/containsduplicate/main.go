@@ -1,27 +1,25 @@
 package main
 
-import (
-	"fmt"
-	"sort"
-)
+ import (
+ 	"fmt"	
+ )
 
-func main(){
-	
-	num := [4]int{1,2,3,1}
+ func main(){
 
-	slicic := num[:]
+ 	num := [0]int{}
 
-	fmt.Print(containsduplicate(slicic))
-}
+ 	slicic := num[:]
 
-func containsduplicate(nums []int) bool {
-	sort.Ints(nums)
-	fmt.Println(nums)
+ 	fmt.Print(containsduplicate(&slicic))
+ }
 
-	for i := 0; i < len(nums)-1; i ++{
-		if nums[i+1] == nums[i]{
-			return true
-		}
-	}
-	return false
+ func containsduplicate(nums *[]int) bool {
+ 	m := make(map[int]int)
+ 	for _, element := range(*nums){
+ 		m[element]++
+ 		if m[element] > 1{
+ 			return true
+ 		}
+ 	}
+ 	return false
 }
