@@ -7,18 +7,19 @@ import (
 
 func main(){
 	
-	num := [0]int{}
+	num := [4]int{1,2,3,1}
 
 	slicic := num[:]
 
-	fmt.Print(containsduplicate(&slicic))
+	fmt.Print(containsduplicate(slicic))
 }
 
-func containsduplicate(nums *[]int) bool {
-	sortedNums := sort.IntSlice(*nums)
+func containsduplicate(nums []int) bool {
+	sort.Ints(nums)
+	fmt.Println(nums)
 
-	for i := 0; i < len(sortedNums)-1; i ++{
-		if sortedNums[i+1] == sortedNums[i]{
+	for i := 0; i < len(nums)-1; i ++{
+		if nums[i+1] == nums[i]{
 			return true
 		}
 	}
