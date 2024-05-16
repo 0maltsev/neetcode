@@ -1,7 +1,8 @@
 package main
 
 import (
-	"fmt"	
+	"fmt"
+	"sort"
 )
 
 func main(){
@@ -14,10 +15,10 @@ func main(){
 }
 
 func containsduplicate(nums *[]int) bool {
-	m := make(map[int]int)
-	for i:= 0; i < len(*nums); i++ {
-		m[(*nums)[i]]++
-		if m[(*nums)[i]] > 1{
+	sortedNums := sort.IntSlice(*nums)
+
+	for i := 0; i < len(sortedNums)-1; i ++{
+		if sortedNums[i+1] == sortedNums[i]{
 			return true
 		}
 	}
