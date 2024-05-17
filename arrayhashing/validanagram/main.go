@@ -6,19 +6,15 @@ import(
 )
 
 func main(){
-	s := "aba"
-	t := "aba"
+	s := "anagram"
+	t := "nagaram"
 	fmt.Println(isAnagram(s, t))
 }
 
 func isAnagram(s string, t string) bool {
-	if s !="" && t !="" {
-		ms := convertStringToHashMap(s)
-		mt := convertStringToHashMap(t)
-		return reflect.DeepEqual(ms, mt)
-	} else {
-		return false
-	}
+	ms := convertStringToHashMap(s)
+	mt := convertStringToHashMap(t)
+	return reflect.DeepEqual(ms, mt)
 }
 
 func convertStringToHashMap(s string) map[rune]int{
