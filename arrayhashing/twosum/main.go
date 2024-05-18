@@ -12,31 +12,17 @@ func main(){
 }
 
 func twoSum(nums []int, target int) []int {
-	if len(nums) <=1 {return nil}
-    m := arrayToHashmap(nums)
-	fmt.Println(m)
-	for key, value :=range(m){
-		first := value[0]
-		
-		if len(m[key]) > 1{
-		m[key] = value[1:]
-		} else {
-			m[key] = []int{}
-		}
+	if len(nums) == 0 {return nil}
+    
+	m := make(map[int]int, len(nums))
 
-		searchingNum := target-key
+	for i := range nums{
+		searching := target - nums[i];
 
-		if m[searchingNum] != nil && len(m[searchingNum])!=0{
-			return []int{first, m[searchingNum][0]}
+		if j, ok := m[searching]; ok{
+			return []int{i, j}
 		}
+		m[nums[i]] = i
 	}
 	return nil
-}
-
-func arrayToHashmap(nums []int) map[int][]int {
-	m := make(map[int][]int)
-	for place, element := range(nums){
-		m[element] = append(m[element], place)
-	}
-	return m
 }
