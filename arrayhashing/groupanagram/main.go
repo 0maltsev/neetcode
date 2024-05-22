@@ -4,6 +4,7 @@ import (
 	"fmt"
 )
 
+
 type Key [26]byte
 
 func main(){
